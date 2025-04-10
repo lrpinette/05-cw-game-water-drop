@@ -25,8 +25,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    background-color: #cbccd1;
+    font-family: 'Libre Baskerville', serif;
 }
 
 .game-wrapper {
@@ -42,47 +42,82 @@ body {
     align-items: center;
     width: 800px;
     padding: 10px;
-    background-color: #fff;
+    background-color: #003366;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    
+}
+
+.timer {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff7e1; /* Updated text color */
 }
 
 #game-container {
     width: 800px;
     height: 600px;
-    background-color: #e6f7ff;
+    background-color: #fff7e1;
     border: 2px solid #333;
     border-radius: 8px;
     position: relative;
     overflow: hidden;
 }
 
+#game-over-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #003366;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 10;
+    display: none; /* Initially hidden */
+    width: 80%; /* Ensure it fits within the container */
+    max-width: 400px; /* Limit maximum width */
+    box-sizing: border-box; /* Include padding in width */
+}
 
-#start-btn {
-    padding: 8px 16px;
-    background-color: #4CAF50;
-    color: white;
+#game-over-box p {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff7e1; /* Updated text color */
+}
+
+#play-again-btn, #start-btn {
+    padding: 10px 20px;
+    background-color: #ffc907;
+    color: #1a1a1a;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    font-family: 'Libre Baskerville', serif; /* Ensured font */
 }
 
-#start-btn:hover {
-    background-color: #45a049;
+#play-again-btn:hover, #start-btn:hover {
+    background-color: #ffde67;
+}
+
+.hidden {
+    display: none;
 }
 
 .score {
     flex: 0 1 auto;  /* Don't grow, can shrink, auto basis */
     font-size: 24px;
     font-weight: bold;
+    color: #fff7e1; /* Updated text color */
 }
 
 .water-drop {
     position: absolute;
     width: 40px;  /* increased from 30px */
     height: 40px; /* increased from 30px */
-    background-color: #0099ff;
+    background-color: #77a8bb;
     border-radius: 50% 50% 50% 50%;
     animation: dropFall linear forwards;
     transform-origin: center;
@@ -91,11 +126,11 @@ body {
 }
 
 .bad-drop {
-    background-color: #ff4444;
+    background-color: #bf6c46;
 }
 
 .game-title {
-    color: #131313;
+    color: #1a1a1a;
     font-size: 48px;
     margin-top: 0;
     margin-bottom: 5px;  /* reduced from 20px */
@@ -103,7 +138,7 @@ body {
 }
 
 .game-tagline {
-    color: #666;
+    color: #1a1a1a;
     font-size: 18px;
     margin-bottom: 20px;
     text-align: center;
