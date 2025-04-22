@@ -22,7 +22,8 @@ Secondary Colors:
 
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Allow stacking of elements */
+    justify-content: space-between; /* Push footer to the bottom */
     align-items: center;
     min-height: 100vh;
     background-color: #cbccd1;
@@ -142,6 +143,63 @@ body {
     font-size: 18px;
     margin-bottom: 20px;
     text-align: center;
+}
+
+#difficulty-selection {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #003366;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 10;
+    display: none; /* Initially hidden */
+    width: 80%; /* Ensure it fits within the container */
+    max-width: 400px; /* Limit maximum width */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+#difficulty-selection p {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff7e1;
+}
+
+.difficulty-btn {
+    padding: 10px 20px;
+    background-color: #ffc907;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Libre Baskerville', serif;
+    margin: 5px;
+}
+
+.difficulty-btn:hover {
+    background-color: #ffde67;
+}
+
+.footer {
+    margin-top: auto; /* Push footer to the bottom */
+    text-align: center;
+    font-size: 16px;
+    color: #1a1a1a;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.footer a {
+    color: #2e9df7;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
 }
 
 @keyframes dropFall {

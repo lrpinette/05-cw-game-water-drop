@@ -6,9 +6,35 @@ let gameTimer;           // Stores the timer for the game duration
 // Initialize score variable
 let score = 0;
 let timeLeft = 60; // Initialize the timer
+let dropInterval = 1000; // Default interval for creating drops
+let gameDuration = 60; // Default game duration in seconds
 
 // Event listener for the start button
 document.getElementById('start-btn').addEventListener('click', startGame);
+
+// Event listener for difficulty buttons
+document.querySelectorAll('.difficulty-btn').forEach(button => {
+    button.addEventListener('click', (event) => {
+        const difficulty = event.target.dataset.difficulty;
+        setDifficulty(difficulty);
+        document.getElementById('difficulty-selection').style.display = 'none';
+        startGameLogic();
+    });
+});
+
+// Function to set difficulty
+function setDifficulty(difficulty) {
+    if (difficulty === 'easy') {
+        dropInterval = 1500; // Slower drops
+        gameDuration = 60; // Full time
+    } else if (difficulty === 'medium') {
+        dropInterval = 1000; // Normal drops
+        gameDuration = 45; // Reduced time
+    } else if (difficulty === 'hard') {
+        dropInterval = 700; // Faster drops
+        gameDuration = 30; // Shorter time
+    }
+}
 
 // Function to update the score display
 function updateScoreDisplay() {
@@ -59,18 +85,24 @@ document.getElementById('play-again-btn').addEventListener('click', () => {
 function startGame() {
     // Prevent multiple game instances
     if (gameActive) return;
-    
+
+    // Show difficulty selection menu
+    document.getElementById('difficulty-selection').style.display = 'block';
+}
+
+// Function to start the game logic after difficulty is selected
+function startGameLogic() {
     // Set up initial game state
     gameActive = true;
     score = 0; // Reset score
-    timeLeft = 60; // Reset timer
+    timeLeft = gameDuration; // Set timer based on difficulty
     updateScoreDisplay();
     updateTimerDisplay();
     document.getElementById('start-btn').disabled = true;
-    
-    // Start creating drops every 1000ms (1 second)
-    gameInterval = setInterval(createDrop, 1000);
-    
+
+    // Start creating drops at the selected interval
+    gameInterval = setInterval(createDrop, dropInterval);
+
     // Countdown timer
     gameTimer = setInterval(() => {
         timeLeft -= 1;
